@@ -89,35 +89,3 @@ $http.get('https://api03.iq.questrade.com/v1/time',
     }, 1000);
   };
 })
-
-api.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Industry1', id: 1 },
-    { title: 'Industry2', id: 2 },
-    { title: 'Industry3', id: 3 },
-    { title: 'Total Balance', id: 4 },
-    { title: 'P/L', id: 5 },
-    { title: 'ROI', id: 6 }
-  ];
-})
-
-api.controller('PlaylistCtrl', function($scope, $stateParams) {
-// This is where the questrade API can show all the account related information.
-
-})
-
-//this is a test controller
-api.controller('ChartsCtrl', function($scope){
-
-  // the corresponsing relation between chats and the app controller can be assocaited here.
-console.log('I am in this charts controller');
-})
-
-// api.controller('portfolioCtrl', function($scope){
-// console.log('I am in this portfolio controller');
-// })
-
-api.controller('browseStocksCtrl', function($scope){
-console.log('I am in this browse stocks controller');
-});
-
