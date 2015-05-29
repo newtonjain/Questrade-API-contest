@@ -56,6 +56,6 @@
 
 	IQAccountService.$inject = ['iqWebAPIService'];
 
-	angular.module('iq.webapi')
+	angular.module('ngQuestradeWebAPI')
 		.service('iqAccountService', IQAccountService);
 })();

@@ -1,0 +1,29 @@
+{
+  "name": "ng-questrade-webapi",
+  "version": "1.0.0",
+  "homepage": "https://github.com/adlerparnas/ng-questrade-webapi",
+  "authors": [
+    "Adler Parnas <eu@adlerparnas.com>"
+  ],
+  "main": "dist/ng-questrade-webapi.min.js",
+  "description": "AngularJS service to connet to Questrade WebAPI",
+  "keywords": [
+    "AngularJS",
+    "Questrade",
+    "WebAPI"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  	"angular": "~1.4.0"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.4.0"
+  }
+}
