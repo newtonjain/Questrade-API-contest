@@ -25,14 +25,13 @@
   "devDependencies": {
     "angular-mocks": "~1.4.0"
   },
-  "_release": "2992a69ed2",
+  "_release": "0e873e241f",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "2992a69ed2f498f94e820affa025f504adda7078"
+    "commit": "0e873e241f114baa3b27bede0640b2ba92aee88d"
   },
   "_source": "git://github.com/adlerparnas/ng-questrade-webapi.git",
   "_target": "*",
-  "_originalSource": "ng-questrade-webapi",
-  "_direct": true
+  "_originalSource": "ng-questrade-webapi"
 }

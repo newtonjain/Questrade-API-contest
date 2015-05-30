@@ -13,14 +13,14 @@ describe('Service: IQWebAPI', function() {
 		api_server: 'https://api01.iq.questrade.com/v1'
 	};
 
-	beforeEach(module('ngQuestradeWebAPI', 'ngMock', function($provide) {
-		$provide.value('oauthToken', mockedToken);
-	}));
+	beforeEach(module('ngQuestradeWebAPI', 'ngMock'));
 
-	beforeEach(inject(function(_$httpBackend_, iqWebAPIService) {
+	beforeEach(inject(function(_$httpBackend_, iqWebAPIService, webAPIUser) {
 		$httpBackend = _$httpBackend_;
 		$httpBackend.when('POST', LOGIN_URL).respond(mockedAcessResponse);
 		$httpBackend.when('GET', mockedAcessResponse.api_server + '/accounts').respond({});
+
+		webAPIUser.oauthToken = mockedToken;
 
 		service = iqWebAPIService;
 	}));

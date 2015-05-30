@@ -1,5 +1,5 @@
 (function() {
 	'use strict';
 
-	angular.module('app.menu', ['iq.webapi']);
+	angular.module('app.menu', ['ngQuestradeWebAPI']);
 })()

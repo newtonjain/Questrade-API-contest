@@ -1,5 +1,6 @@
 (function() {
 	'use strict';
 
-	angular.module('ngQuestradeWebAPI', []);
+	angular.module('ngQuestradeWebAPI', [])
+		.value('webAPIUser', { oauthToken: null });
 })();

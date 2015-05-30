@@ -6,18 +6,27 @@
 	var POST_REQUEST = 'POST';
 	var GRANT_TYPE = 'refresh_token';
 
-	function IQWebAPIService($http, oauthToken) {
+	function IQWebAPIService($http, webAPIUser) {
 		var _self = this;
 		var _tokenPromise;
 
+		/**
+		 * Sets the default authentication method and token in the headers
+		 * 
+		 * @param {String} token_type   
+		 * @param {String} access_token 
+		 */
 		function _setAuthorizationToken(token_type, access_token) {
 			$http.defaults.headers.common.Authorization = token_type + ' ' + access_token;
 		}
 
+		/**
+		 * Requests the access method
+		 */
 		function _getAccessToken() {
 			var requestParameters = {
 				grant_type: GRANT_TYPE,
-				refresh_token: oauthToken
+				refresh_token: webAPIUser.oauthToken
 			};
 
 			if (!_tokenPromise) {
@@ -31,17 +40,27 @@
 			return _tokenPromise;
 		}
 
-		function _doRequest(type, method, parameters) {
-			type = type || GET_REQUEST;
+		/**
+		 * Do the request to the server
+		 * 
+		 * @param  {String} requestType     GET | POST
+		 * @param  {String} method     
+		 * @param  {Object} parameters 
+		 */
+		function _doRequest(requestType, method, parameters) {
+			requestType = requestType || GET_REQUEST;
 
 			return _getAccessToken().then(function(accessPermision) {
 				var request = {
-					type: type,
+					method: requestType,
 					url: accessPermision.api_server + '/' + method,
-					data: parameters
+					params: requestType == GET_REQUEST ? parameters : null,
+					data: requestType == POST_REQUEST ? parameters : null
 				};
 
-				return $http(request);
+				return $http(request).then(function(response) {
+					return response.data;
+				});
 			});
 		}
 
@@ -61,7 +80,7 @@
 		_self.post = _doRequest.bind(_self, POST_REQUEST);
 	}
 
-	IQWebAPIService.$inject = ['$http', 'oauthToken'];
+	IQWebAPIService.$inject = ['$http', 'webAPIUser'];
 
 	angular.module('ngQuestradeWebAPI')
 		.service('iqWebAPIService', IQWebAPIService);
