@@ -1,5 +1,34 @@
 <ion-view view-title="Portfolio">
   <ion-content>
     <div portfolio-chart data="chartData" style="height: 350px;"></div>
+
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <h2 align='center'>Sector</h2> 
+
+ <div class="item item-input-inset">
+    <label class="item-input-wrapper">
+      <input type="text" ng-model="investment" >
+    </label>
+    <button class="button button-small">
+      Submit
+    </button>
+  </div>
+
+<div class="row">
+    
+  <div google-chart chart="chart" class="col" style="{{chart.cssStyle}}"/></div>
+  <div class="col" style="padding-left: 30px">
+    <p>
+    Software: <input type=range min=0 max=10000 value={{aa}} ng-model="aa" ng-change="chart.data[1][1]=1*aa"> {{aa}}
+  </p>
+  <p>
+    Hardware: <input type=range min=0 max=10000 value={{bb}} ng-model="bb" ng-change="chart.data[2][1]=1*bb">{{bb}}
+  </p>
+  <p>
+    Services: <input type=range min=0 max=10000 value={{cc}} ng-model="cc" ng-change="chart.data[3][1]=1*cc">{{cc}}
+  </p>
+  </div>
+
+</div>
   </ion-content>
 </ion-view>
