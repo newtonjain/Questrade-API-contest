@@ -40,12 +40,14 @@
 		}
 	]
 
-	function PortfolioCtrl($scope) {
+	function PortfolioCtrl($scope, positions) {
 		var _self = this;
 		var accountsPromise;
 
-	
+		$scope.portfolio1 = positions.portfolio1();
 
+	
+		//console.log('port', positions.portfolio1());
 		function _prepareBubbleChart(positions) {
 			var chartData = [['ID', 'Mkt Value', 'PnL', 'industry',  'Number of Positions']];
 			var i, position;
@@ -82,7 +84,7 @@
 		_prepareBubbleChart(mockedPositions);
 	}
 
-	PortfolioCtrl.$inject = ['$scope'];
+	PortfolioCtrl.$inject = ['$scope', 'positions'];
 
 	angular.module('app.portfolio')
 		.controller('PortfolioCtrl', PortfolioCtrl); 
