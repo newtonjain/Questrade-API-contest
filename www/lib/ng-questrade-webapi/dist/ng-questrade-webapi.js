@@ -116,11 +116,17 @@
 		function _getAccessToken() {
 			var requestParameters = {
 				grant_type: GRANT_TYPE,
-				refresh_token: webAPIUser.oauthToken
+				refresh_token: webAPIUser.oauthToken,
+				callback: 'toto'
 			};
 
 			if (!_tokenPromise) {
-				_tokenPromise = $http.post(LOGIN_OAUTH_URL, requestParameters).then(function(accessPermision) {
+				_tokenPromise = $http({
+					method: 'JSONP',
+					url: LOGIN_OAUTH_URL, 
+					params: requestParameters
+				}).then(function(accessPermision) {
+					console.log(accessPermision);
 					accessPermision = accessPermision.data;
 					_setAuthorizationToken(accessPermision.token_type, accessPermision.access_token);
 					return accessPermision;
