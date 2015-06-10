@@ -31,13 +31,31 @@
             controller: "PortfolioCtrl" 
           }
         }
+      })
+      .state('app.balances', {
+        url: "/balances",
+        views: {
+          menuContent: {
+            templateUrl: "templates/balances.html",
+            controller: "BalancesCtrl",
+            controllerAs: 'vmBalancesCtrl' 
+          }
+        }
+      })
+      .state('app.single', {
+        url: "/playlists/:playlistId",
+        views: {
+          'menuContent': {
+            templateUrl: "templates/playlist.html"
+          }
+        }
       });
 
     
     $urlRouterProvider.otherwise('/app/portfolio');
   }
 
-  var app = angular.module('app', ['ionic', 'app.menu', 'app.portfolio'])
+  var app = angular.module('app', ['ionic', 'app.menu', 'app.portfolio', 'app.balances'])
     .run(_run)
     .config(_config);
 })();

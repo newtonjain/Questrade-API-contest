@@ -1,6 +1,7 @@
 (function() {
 	'use strict';
-
+// ADLER: how are these charts implemented. There is a directive, a controller and a html 
+// that are sharing the data in a very clean fashion.
 	var mockedPositions = [
 		{
 			symbol: {
@@ -109,6 +110,13 @@
     $scope.bb=1*$scope.chart.data[2][1];
     $scope.cc=1*$scope.chart.data[3][1];  
     $scope.dd = $scope.aa + $scope.bb + $scope.cc;
+
+    //ADLER: Why is this not working, I thought the two way binding will display dd in its right place
+
+    $scope.$watch('aa', function(){
+
+    	alert('changed');
+    })
 
 		}
 

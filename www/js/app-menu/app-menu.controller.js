@@ -4,6 +4,9 @@
 	function AppMenuController($scope, iqAccountService) {
 		var _self = this;
 
+		$scope.aa;
+		$scope.bb;
+		$scope.cc;
 
 		iqAccountService.getAccounts().then(function(accounts) {
 			$scope.accounts = accounts;
