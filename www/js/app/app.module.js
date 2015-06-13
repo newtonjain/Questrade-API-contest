@@ -32,6 +32,10 @@
           }
         }
       })
+      .state('app.portfolio.browseStocks', {
+        url: "/browseStocks",
+        templateUrl: "templates/browseStocks.html"
+      })
       .state('app.balances', {
         url: "/balances",
         views: {

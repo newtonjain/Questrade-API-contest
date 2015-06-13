@@ -6,11 +6,11 @@
   <h2 align='center'>Sector</h2> 
 
  <div class="item item-input-inset">
-    <label class="item-input-wrapper">
+    <label class="item-input-wrapper">$
       <input type="text" ng-model="dd" >
     </label>
-    <button class="button button-small">
-      Submit
+    <button class="button button-small button-balanced" ng-click = "distribute(dd)">
+      Buy!
     </button>
   </div>
 
@@ -19,16 +19,31 @@
   <div google-chart chart="chart" class="col" style="{{chart.cssStyle}}"/></div>
   <div class="col" style="padding-left: 30px">
     <p>
-    Software: <input type=range min=0 max=10000 value={{aa}} ng-model="aa" ng-change="chart.data[1][1]=1*aa"> {{aa}}
+    Software: <input type=range min=0 max=100 value={{aa.data}} data-ng-model="aa.data" ng-change="chart.data[1][1]=1*aa.data"> {{a.data}} {{in1}}
   </p>
   <p>
-    Hardware: <input type=range min=0 max=10000 value={{bb}} ng-model="bb" ng-change="chart.data[2][1]=1*bb">{{bb}}
+    Hardware: <input type=range min=0 max=100 value={{bb.data}} data-ng-model="bb.data" ng-change="chart.data[2][1]=1*bb.data">{{b.data}} {{in2}}
   </p>
   <p>
-    Services: <input type=range min=0 max=10000 value={{cc}} ng-model="cc" ng-change="chart.data[3][1]=1*cc">{{cc}}
+    Services: <input type=range min=0 max=100 value={{cc.data}} data-ng-model="cc.data" ng-change="chart.data[3][1]=1*cc.data">{{c.data}} {{in3}}
   </p>
+  {{dd}}
   </div>
 
 </div>
+<div><br><br></div>
+ <div class="item item-input-inset">
+    <label class="item-input-wrapper">
+      <input type="text" ng-model="stock" >
+    </label>
+    <button class="button button-small button-balanced" ng-click = "getStock(stock)">
+      Search
+    </button>
+  </div>
+
+  <div class="row">
+  <div class="col" ng-repeat="stocks in cIndustries">{{stocks.Sector}}</div>
+</div>
+
   </ion-content>
 </ion-view>

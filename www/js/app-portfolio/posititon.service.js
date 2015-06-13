@@ -33414,6 +33414,10 @@ angular.module('app.portfolio')
             port1.push(Mocked.get(p1[i]));
         }
         return port1;
-    }  
+    } 
+
+    this.get = function get(stock) {
+        return Mocked.get(stock);
+    } 
 
 })
