@@ -7,30 +7,43 @@
 
  <div class="item item-input-inset">
     <label class="item-input-wrapper">$
-      <input type="text" ng-model="dd" >
+      <input type="text" ng-model="invest" >
     </label>
-    <button class="button button-small button-balanced" ng-click = "distribute(dd)">
+    <button class="button button-small button-balanced" ng-click = "distribute(invest)">
       Buy!
     </button>
   </div>
 
 <div class="row">
     
-  <div google-chart chart="chart" class="col" style="{{chart.cssStyle}}"/></div>
-  <div class="col" style="padding-left: 30px">
-    <p>
-    Software: <input type=range min=0 max=100 value={{aa.data}} data-ng-model="aa.data" ng-change="chart.data[1][1]=1*aa.data"> {{a.data}} {{in1}}
-  </p>
-  <p>
-    Hardware: <input type=range min=0 max=100 value={{bb.data}} data-ng-model="bb.data" ng-change="chart.data[2][1]=1*bb.data">{{b.data}} {{in2}}
-  </p>
-  <p>
-    Services: <input type=range min=0 max=100 value={{cc.data}} data-ng-model="cc.data" ng-change="chart.data[3][1]=1*cc.data">{{c.data}} {{in3}}
-  </p>
-  {{dd}}
-  </div>
+  <div google-chart chart="chart" class="col" style="{{chart.cssStyle}}"></div>
 
+  <div class="col" style="padding-left: 30px">
+    <!-- <div ng-repeat="(key,value) in cIndustries"> -->
+   
+    <p ng-show ="keys[0]">
+     {{keys[0]}}: <input type=range min=0 max=100 value={{aa.data}} data-ng-model="aa.data" ng-change="chart.data[1][1]=1*aa.data"> {{a.data}}| Split: $ {{in1 | number : 2}}
+  </p>
+  <p ng-show ="keys[1]">
+    {{keys[1]}}: <input type=range min=0 max=100 value={{bb.data}} data-ng-model="bb.data" ng-change="chart.data[2][1]=1*bb.data">{{b.data}}| Split: ${{in2 | number : 2}}
+  </p>
+  <p ng-show ="keys[2]">
+    {{keys[2]}}: <input type=range min=0 max=100 value={{cc.data}} data-ng-model="cc.data" ng-change="chart.data[3][1]=1*cc.data">{{c.data}}| Split: ${{in3 | number : 2}}
+  </p>
+  <p ng-show ="keys[3]">
+  {{keys[3]}}: <input type=range min=0 max=100 value={{dd.data}} data-ng-model="dd.data" ng-change="chart.data[4][1]=1*dd.data">{{d.data}}| Split: ${{in4 | number : 2}}
+  </p>
+  <p ng-show ="keys[4]">
+  {{keys[4]}}: <input type=range min=0 max=100 value={{ee.data}} data-ng-model="ee.data" ng-change="chart.data[3][1]=1*ee.data">{{e.data}}| Split: ${{in5 | number : 2}}
+  </p>
+  <p ng-show ="keys[5]">
+  {{keys[5]}}: <input type=range min=0 max=100 value={{ff.data}} data-ng-model="ff.data" ng-change="chart.data[3][1]=1*ff.data">{{f.data}}| Split: ${{in3 | number : 2}}
+  </p>
+
+  <!-- </div> -->
+  </div>
 </div>
+
 <div><br><br></div>
  <div class="item item-input-inset">
     <label class="item-input-wrapper">
@@ -42,8 +55,9 @@
   </div>
 
   <div class="row">
-  <div class="col" ng-repeat="stocks in cIndustries">{{stocks.Sector}}</div>
+  <div class="col" ng-repeat="(key, value) in cIndustries">{{key}}</div>
 </div>
+
 
   </ion-content>
 </ion-view>

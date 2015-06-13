@@ -44,7 +44,11 @@
         $scope.aa = {};
         $scope.bb = {};
         $scope.cc = {};
+        $scope.dd = {};
+        $scope.ee = {};
+        $scope.ff = {};
         $scope.cIndustries = {};
+        $scope.keys = [];
         console.log('port', $scope.portfolio1);
 
         function _prepareBubbleChart(positions) {
@@ -89,12 +93,18 @@
 
             var chart1 = {};
             chart1.type = "PieChart";
+//////////////////////////
             chart1.data = [
-                ['Component', 'cost'],
-                ['Software', 50],
-                ['Hardware', 8]
+                ['Component', 'cost']
             ];
-            chart1.data.push(['Services', 20]);
+           
+/////////////////////////////
+            for(var key in $scope.cIndustries){
+                console.log('the len', $scope.cIndustries.length);
+                chart1.data.push([key, 20]);
+            }
+            $scope.keys = Object.keys($scope.cIndustries);
+
             chart1.options = {
                 displayExactValues: true,
                 width: 400,
@@ -117,9 +127,14 @@
 
             $scope.chart = chart1;
 
+
             $scope.aa.data = 1 * $scope.chart.data[1][1];
             $scope.bb.data = 1 * $scope.chart.data[2][1];
             $scope.cc.data = 1 * $scope.chart.data[3][1];
+            $scope.dd.data = 1 * $scope.chart.data[4][1];
+          //  $scope.ee.data = 1 * $scope.chart.data[5][1];
+ 
+ 
 
             $scope.$watch(function() {
                 return $scope.aa;
@@ -138,6 +153,11 @@
             }, function(c) {
                 $scope.c = c;
             });
+            $scope.$watch(function() {
+                return $scope.dd;
+            }, function(d) {
+                $scope.d = d;
+            });
 
             //ADLER: Why is this not working, I thought the two way binding will display dd in its right place
             // $scope.a = $scope.aa.data; 
@@ -146,15 +166,16 @@
 
             $scope.distribute = function(number) {
                 console.log('here is the number', number);
-                var sum = parseInt($scope.a.data, 10) + parseInt($scope.b.data, 10) + parseInt($scope.c.data, 10);
-                console.log('here is the sum', sum, $scope.a.data, $scope.b.data, $scope.c.data);
+                var sum = parseInt($scope.a.data, 10) + parseInt($scope.b.data, 10) + parseInt($scope.c.data, 10) + parseInt($scope.d.data, 10);
+                console.log('here is the sum', sum, $scope.a.data, $scope.b.data, $scope.c.data, $scope.d.data);
                 $scope.in1 = $scope.a.data * number / sum;
                 $scope.in2 = $scope.b.data * number / sum;
                 $scope.in3 = $scope.c.data * number / sum;
+                $scope.in4 = $scope.d.data * number / sum;
             }
         }
 
-        _prepareBubbleChart(mockedPositions);
+     
 ////////////////////////////////////////////////
 
         $scope.getStock = function(stock) {
@@ -171,17 +192,23 @@
                 var Sector = $scope.portfolio1[i].Sector;
                 if($scope.cIndustries[Sector] == undefined){
                     $scope.cIndustries[Sector] = $scope.portfolio1[i];
-                }
-            }
+                 } 
+                 // else{
+                 //    $scope.cIndustries[Sector] = $scope.cIndustries[Sector] +  $scope.portfolio1[i];
+                 // }
 
-            console.log('the industry is' + $scope.cIndustries);
+            }
+            //alert(JSON.stringify(Object.keys($scope.cIndustries)));
+
+            console.log('the industry is' + JSON.stringify($scope.cIndustries));
+               _prepareBubbleChart(mockedPositions);
         }
 
 
         $scope.categorize();
 
 /////////////////////////////////////////////////////
-        
+   _prepareBubbleChart(mockedPositions);    
     }
 
     PortfolioCtrl.$inject = ['$scope', 'positions'];
