@@ -5,9 +5,9 @@
 		webAPIUser.oauthToken = '8bqWWhgBURodkQNldX0k1LgAV-W8lDEb0';
 
 	  $scope.$watch('$scope.aa', function(a) {
-   	console.log('changing', a);
+  	 	console.log('changing', a);
 	//$scope.a = a;
-});
+	  });
 
 	}
 //ADLER: How is this webAPIuser being injected into the controller 

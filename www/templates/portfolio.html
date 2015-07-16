@@ -1,9 +1,31 @@
 <ion-view view-title="Portfolio">
   <ion-content>
-    <div portfolio-chart data="chartData" style="height: 350px;"></div>
-
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <div class="card">
+ <div class="row">
+  <div class="col"><h4>Step 1) - </h4></div>
+  <div class="col-90"><h4> <h4 align='center' style="padding-right: 145px">Enter Symbol</h4> </h4></div>
+</div>
+<button ui-sref="app.portfolio.browseStocks">click here for browse stocks</button>
+   <div class="item item-input-inset">
+    <label class="item-input-wrapper">
+      <input type="text" ng-model="stock" placeholder="Enter a symbol to search">
+    </label>
+    <button class="button button-small button-balanced" ng-click = "getStock(stock)">
+      Search
+    </button>
+  </div>
   <h2 align='center'>Sector</h2> 
+  <div class="row">
+  <div class="col" ng-repeat="(key, value) in cIndustries">{{key}}</div>
+</div>
+</div>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<div><br></div>
+ <div class="card">
+ <div class="row">
+  <div class="col"><h4>Step 2) - </h4></div>
+  <div class="col-90"><h4> <h4 align='center' style="padding-right: 145px">Select DIstribution</h4> </h4></div>
+</div>
 
  <div class="item item-input-inset">
     <label class="item-input-wrapper">$
@@ -43,21 +65,15 @@
   <!-- </div> -->
   </div>
 </div>
-
-<div><br><br></div>
- <div class="item item-input-inset">
-    <label class="item-input-wrapper">
-      <input type="text" ng-model="stock" >
-    </label>
-    <button class="button button-small button-balanced" ng-click = "getStock(stock)">
-      Search
-    </button>
-  </div>
-
-  <div class="row">
-  <div class="col" ng-repeat="(key, value) in cIndustries">{{key}}</div>
 </div>
-
+<div><br></div>
+<div class="card" ng-if ="in1 || in2 || in3">
+   <div class="row">
+    <div class="col"><h4>Step 3) - </h4></div>
+    <div class="col-90"><h4> <h4 align='center' style="padding-right: 145px">Track your Portfolio</h4> </h4></div>
+  </div>
+    <div portfolio-chart data="chartData" style="height: 350px;"></div>
+</div>
 
   </ion-content>
 </ion-view>
